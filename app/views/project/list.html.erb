@@ -5,6 +5,12 @@
     <th>Title</th>
     <th>Text</th>
   </tr>
+    <% @urls.each do |url| %>
+    <tr>
+      <td><%= url.address %></td>
+      <td><%= url.twitter %></td>
+    </tr>
+  <% end %>
  
   
 </table>

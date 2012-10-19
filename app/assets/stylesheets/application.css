@@ -11,3 +11,17 @@
  *= require_self
  *= require_tree .
  */
+
+/** fuck yeah css3!! **/
+tr:nth-of-type(odd) {
+  background-color:#ccc;
+}
+
+td:nth-of-type(odd) {
+  background-color:#999;
+}
+
+#url-list td{
+  padding: 8px;
+}
+

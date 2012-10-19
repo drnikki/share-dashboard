@@ -4,14 +4,15 @@ class Urls
   field :address, type: String
   field :project, type: String
   #@todo, make the relationships if project stays
-  field :facebook, type: Numeric
-  field :twitter, type: Numeric
-  field :reddit, type: Numeric
-  field :linkedin, type: Numeric
-  field :digg, type: Numeric
-  field :delicious, type: Numeric
-  field :stumbleupon, type: Numeric
-  field :pinterest, type: Numeric
-  field :gplus, type: Numeric
+  field :facebook, type: Integer
+  field :twitter, type: Integer
+  field :reddit, type: Integer
+  field :linkedin, type: Integer
+  field :digg, type: Integer
+  field :delicious, type: Integer
+  field :stumbleupon, type: Integer
+  field :pinterest, type: Integer
+  field :gplus, type: Integer
+  field :updated, type: DateTime
   
 end

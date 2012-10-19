@@ -10,7 +10,12 @@ class UrlsController < ApplicationController
 
 
   def add
-    
+
+  end
+
+  def list
+    @urls = Urls.all()
+    p @urls
   end
 
   # Saves a new URL and directs user to its page
@@ -23,6 +28,8 @@ class UrlsController < ApplicationController
     params[:urls]["twitter"] = twitter theurl
     params[:urls]["stumbleupon"] = stumbleupon theurl
     params[:urls]["facebook"] = facebook theurl
+    params[:urls]["updated"] = Time.now
+
 
     @urls = Urls.new(params[:urls]);
     @urls.save
