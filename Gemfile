@@ -1,12 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.8.rc2'
-
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
+gem 'rails', '>=3.2.8'
 gem 'activemodel', '>=3.0.0'
-
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -41,6 +36,10 @@ group :test do
   gem "cucumber-rails"
   gem "capybara"
   gem "rspec-rails", ">= 2.0.1"
+end
+
+group :workin do
+	gem "resque"
 end
 
 gem "bson_ext"
