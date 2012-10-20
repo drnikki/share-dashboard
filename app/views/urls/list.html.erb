@@ -1,0 +1,23 @@
+<h1>Listing Urls for project @TODO</h1>
+ 
+<table>
+  <tr>
+    <th>Address</th>
+    <th>Twitter</th>
+    <th>Delicious</th>
+    <th>Facebook</th>
+    <th>Stubmelupon</th>
+
+  </tr>
+    <% @urls.each do |url| %>
+    <tr>
+      <td><%= url.address %></td>
+      <td><%= url.twitter %></td>
+      <td><%= url.delicious %></td>
+      <td><%= url.facebook %></td>
+      <td><%= url.stumbleupon %></td>
+    </tr>
+  <% end %>
+ 
+  
+</table>
