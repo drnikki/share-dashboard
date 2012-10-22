@@ -1,21 +1,28 @@
-<h1>Listing Urls for project @TODO</h1>
+<% provide(:title, 'All urls') %>
+<h1>all urls for project __________</h1>
  
-<table>
+<table id="url-list">
   <tr>
     <th>Address</th>
     <th>Twitter</th>
     <th>Delicious</th>
     <th>Facebook</th>
-    <th>Stubmelupon</th>
+    <th>Stumble Upon</th>
+    <th>Updated</th>
+
 
   </tr>
     <% @urls.each do |url| %>
     <tr>
       <td><%= url.address %></td>
-      <td><%= url.twitter %></td>
-      <td><%= url.delicious %></td>
-      <td><%= url.facebook %></td>
-      <td><%= url.stumbleupon %></td>
+      <td><%= number_with_delimiter(url.twitter) %></td>
+      <td><%= number_with_delimiter(url.delicious) %></td>
+      <td><%= number_with_delimiter(url.facebook) %></td>
+      <td><%= number_with_delimiter(url.stumbleupon) %></td>      
+      <td><%= url.updated.to_time.strftime('%B %e at %l:%M %p') %>
+        <br /><%= link_to 'Refresh', :action => 'force_refresh', :id => url.id %>
+      </td>
+
     </tr>
   <% end %>
  

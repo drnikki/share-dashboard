@@ -13,15 +13,26 @@
  */
 
 /** fuck yeah css3!! **/
+
+
+/** todo - these are ugly... **/
 tr:nth-of-type(odd) {
-  background-color:#ccc;
+  background-color:#CCC8CA;
 }
 
+/**
 td:nth-of-type(odd) {
   background-color:#999;
 }
+**/
 
 #url-list td{
   padding: 8px;
+  text-align: center;
 }
+
+#url-list th {
+	padding: 10px 20px;
+}
+
 

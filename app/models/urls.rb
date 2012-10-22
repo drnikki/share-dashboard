@@ -39,7 +39,7 @@ class Urls
     params["twitter"] = twitter theurl
     params["stumbleupon"] = stumbleupon theurl
     params["facebook"] = facebook theurl
-    params["updated"] = Time.now
+    params["updated"] = Time.now.to_s
 	
 	return params
   end

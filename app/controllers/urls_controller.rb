@@ -13,11 +13,31 @@ class UrlsController < ApplicationController
   
   # little tester for resque when my db is pretty empty
   def refresh
-	require 'resque'
-	# todo fix this.
-	require_relative '../jobs/ProjectRefresher'
-    Resque.enqueue(ProjectRefresher)
+    Urls.all.each do |record|
+      data = Urls.get_share_data record.address
+      # comes back as an array, goes right in.
+      record.update_attributes(data)
+    end
+
+    # debugging via resque is dumb.
+  	# require 'resque'
+  	# # todo fix this.
+  	# require_relative '../jobs/ProjectRefresher'
+   #  Resque.enqueue(ProjectRefresher)
+       redirect_to :action => :list
   end
+
+  # @todo placeholder. urls all f'd up as requirements change.
+  def force_refresh 
+    p params[:id]
+        puts 'forcing'
+    #require 'resque'
+    # todo fix this.
+    #require_relative '../jobs/ProjectRefresher'
+    #Resque.enqueue(ProjectRefresher)
+    redirect_to :action => :list
+  end
+
 
   # Saves a new URL and directs user to its page
   def create
@@ -35,6 +55,7 @@ class UrlsController < ApplicationController
   def show
     @urls = Urls.find(params[:id])
   end
+
 
 end
 

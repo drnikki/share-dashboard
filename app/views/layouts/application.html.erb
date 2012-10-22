@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Share Dashboard</title>
+  <title>Share Dashboard | <%= yield(:title) %></title>
   <%= stylesheet_link_tag    "application", "bootstrap.min", :media => "all" %>
   <%= javascript_include_tag "application", "main" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<header>
+	  <ul>
+	  	<li><%= link_to 'Add Url', :controller => 'urls', :action => 'add'  %></li>
+	  	<li><%= link_to 'List Urls', :controller => 'urls', :action => 'list'  %></li>
+	</header>
 
 <%= yield %>
 
