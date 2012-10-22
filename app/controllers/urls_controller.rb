@@ -10,6 +10,14 @@ class UrlsController < ApplicationController
     @urls = Urls.all()
     p @urls
   end
+  
+  # little tester for resque when my db is pretty empty
+  def refresh
+	require 'resque'
+	# todo fix this.
+	require_relative '../jobs/ProjectRefresher'
+    Resque.enqueue(ProjectRefresher)
+  end
 
   # Saves a new URL and directs user to its page
   def create
