@@ -45,3 +45,4 @@ end
 gem "bson_ext"
 gem "mongoid"
 gem "json"
+gem "will_paginate_mongoid"

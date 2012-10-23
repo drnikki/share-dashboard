@@ -9,15 +9,18 @@ ShareDashboard::Application.routes.draw do
   post "projects" => "project#create"
   get "projects" => "project#list"
 
-  get "urls" => "urls#list"
   get "urls/add" => "urls#add"
+  #get "urls/:page" => "urls#list"
   # @todo route cleanup. 
   post "urls" => "urls#create"
 
 
   get "urls/refresh" => "urls#refresh"
+  get "urls/forcerefresh/:id" => "urls#force_refresh"
+
   
   get "urls/:id" => "urls#show"
+
   #
 
 

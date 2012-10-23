@@ -7,8 +7,13 @@ class UrlsController < ApplicationController
 
   # list all of the URLS.  And I mean ALL of them
   def list
-    @urls = Urls.all()
-    p @urls
+    ## perform a paginated query:
+    # @posts = Post.paginate(:page => params[:page])
+
+    # or, use an explicit "per page" limit:
+    # Post.paginate(:page => params[:page], :per_page => 30)
+
+    @urls = Urls.all().paginate(:page => params[:page], :per_page => 1)
   end
   
   # little tester for resque when my db is pretty empty
@@ -19,18 +24,13 @@ class UrlsController < ApplicationController
       record.update_attributes(data)
     end
 
-    # debugging via resque is dumb.
-  	# require 'resque'
-  	# # todo fix this.
-  	# require_relative '../jobs/ProjectRefresher'
-   #  Resque.enqueue(ProjectRefresher)
-       redirect_to :action => :list
+    redirect_to :action => :list
   end
 
   # @todo placeholder. urls all f'd up as requirements change.
   def force_refresh 
     p params[:id]
-        puts 'forcing'
+    puts 'forcing'
     #require 'resque'
     # todo fix this.
     #require_relative '../jobs/ProjectRefresher'
@@ -38,14 +38,13 @@ class UrlsController < ApplicationController
     redirect_to :action => :list
   end
 
-
   # Saves a new URL and directs user to its page
   def create
-	require 'open-uri'	
-	theurl = params[:urls]['address']
-	
-	data = Urls.get_share_data theurl
-	data = data.merge(params[:urls])
+  	require 'open-uri'	
+  	theurl = params[:urls]['address']
+  	
+  	data = Urls.get_share_data theurl
+  	data = data.merge(params[:urls])
     @urls = Urls.new(data)
     @urls.save
     redirect_to :action => :show, :id => @urls.id
@@ -55,7 +54,6 @@ class UrlsController < ApplicationController
   def show
     @urls = Urls.find(params[:id])
   end
-
 
 end
 
